@@ -1,7 +1,10 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import { createTask, getTasks } from "./controllers/taskController";
+import { validate } from "./middleware/handleValidation";
+import { taskCreateValidation } from "./middleware/taskValidation";
 
 const router = Router();
 
-export default router.get("/task", (req, res) => {
-  res.status(200).send("API Working!");
-});
+router.get("/task", getTasks);
+router.post("/task", taskCreateValidation(), validate, createTask);
+export default router;
