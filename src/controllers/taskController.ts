@@ -25,3 +25,13 @@ export const createTask = async (request: Request, response: Response) => {
     return response.status(404).json(error);
   }
 };
+export const deleteTask = async (request: Request, response: Response) => {
+  try {
+    const { id } = request.params;
+
+    const data = await TaskModel.findByIdAndDelete(id);
+    return response.status(200).json(data);
+  } catch (error) {
+    return response.status(404).json(error);
+  }
+};
