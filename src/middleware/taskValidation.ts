@@ -12,6 +12,6 @@ export const taskCreateValidation = () => {
       .withMessage("Descrição é obrigatório.")
       .isLength({ min: 5 })
       .withMessage("À descrição deve conter ao menos 3 caracteres"),
-    body("isCompleted").isString().withMessage("isCompleted é obrigatório."),
+    body("isCompleted").isBoolean().withMessage("isCompleted é obrigatório."),
   ];
 };
